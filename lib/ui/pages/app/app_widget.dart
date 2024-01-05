@@ -1,4 +1,5 @@
 import 'package:fake_store_app/ui/pages/home/home_page.dart';
+import 'package:fake_store_app/ui/styles/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -6,9 +7,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      theme: theme,
+      home: const HomePage(),
     );
   }
 }

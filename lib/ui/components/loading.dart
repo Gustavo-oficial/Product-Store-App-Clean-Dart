@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class Loading extends StatelessWidget {
-  const Loading({
+class Skelton extends StatelessWidget {
+  const Skelton({
     super.key,
     required this.height,
     required this.width,

@@ -14,12 +14,12 @@ class ProductRepository implements IProduct {
   AsyncResult<void, FailureImpl> newProduct({required Product product}) async{
     try {
       Future<Response> response = await APIConfig.request().then((uno) => uno.post(
-        "/products",
+        "/Products",
         timeout: const Duration(seconds: 30),
-        data: product.toNewProduct()
+        data: product.toJson()
       ));
 
-      return response.toSuccess();
+      return toSuccess();
     } on UnoError catch (error) {
       return Failure(FailureImpl(message: RequestException.getError(data: error.response?.data, defaultMessage: "Erro ao cadastrar novo produto..."), data: error));
     } catch (exception) {
@@ -32,7 +32,7 @@ class ProductRepository implements IProduct {
     try {
       Response response = await APIConfig.request().then(
         (uno) => uno.get(
-          "/products",
+          "/Products",
           timeout: const Duration(seconds: 30)
         )
       );
@@ -42,6 +42,39 @@ class ProductRepository implements IProduct {
       return Failure(FailureImpl(message: RequestException.getError(data: error.response?.data, defaultMessage: "Erro ao buscar produtos..."), data: error));
     } catch (exception) {
       return Failure(FailureImpl(message: RequestException.getError(defaultMessage: "Erro ao buscar produtos...")));
+    }
+  }
+
+  @override
+  AsyncResult<void, FailureImpl> updateProduct({required Product product}) async {
+    try {
+      Future<Response> response = await APIConfig.request().then((uno) => uno.put(
+        "/Products/${product.id}",
+        timeout: const Duration(seconds: 30),
+        data: product.toJson()
+      ));
+
+      return toSuccess();
+    } on UnoError catch (error) {
+      return Failure(FailureImpl(message: RequestException.getError(data: error.response?.data, defaultMessage: "Erro ao alterar produto..."), data: error));
+    } catch (exception) {
+      return Failure(FailureImpl(message: RequestException.getError(defaultMessage: "Erro ao alterar produto...")));
+    }
+  }
+  
+  @override
+  AsyncResult<void, FailureImpl> deleteProduct({required String id}) async {
+    try {
+      Future<Response> response = await APIConfig.request().then((uno) => uno.delete(
+        "/Products/$id",
+        timeout: const Duration(seconds: 30),
+      ));
+
+      return toSuccess();
+    } on UnoError catch (error) {
+      return Failure(FailureImpl(message: RequestException.getError(data: error.response?.data, defaultMessage: "Erro ao excluir produto..."), data: error));
+    } catch (exception) {
+      return Failure(FailureImpl(message: RequestException.getError(defaultMessage: "Erro ao excluir produto...")));
     }
   }
 }

@@ -2,7 +2,7 @@ import 'package:fake_store_app/Interactor/enum/persistence_enum.dart';
 import 'package:fake_store_app/Services/repositories/persistence_repository.dart';
 import 'package:uno/uno.dart';
 
-const String baseUrl = 'https://fakestoreapi.com';
+const String baseUrl = 'https://5f7f8ed3d6aabe00166f0730.mockapi.io/api';
 
 class APIConfig {
   static Future<Uno> request() async{
