@@ -3,13 +3,21 @@ import 'package:fake_store_app/Interactor/provider/product_provider.dart';
 import 'package:fake_store_app/Services/repositories/product_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
 
 import 'ui/pages/app/app_widget.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
   DI.addInjections();
   
-  runApp(const MyApp());
+  runApp(
+    Provider(
+      create: (_) => ProductProvider(ProductRepository()),
+      child: const MyApp()
+    )
+  );
 }
 
 class DI {

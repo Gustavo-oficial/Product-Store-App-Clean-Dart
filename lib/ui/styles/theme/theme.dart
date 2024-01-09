@@ -20,8 +20,8 @@ ColorScheme get _colorScheme =>  ColorScheme(
   error: const Color.fromRGBO(162, 24, 14, 1),
   onError: Colors.white,
   background: const Color(0xFF26282B),
-  onBackground: const Color(0xFF26282B),
+  onBackground: const Color(0xFFFFFFFF),
   surface: const Color(0xFF74787D),
-  onSurface: Colors.black,
+  onSurface: const Color(0xFFFFFFFF),
   outline: const Color(0xFF26282B),
 );

@@ -22,14 +22,20 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    productProvider.dispose();
+    super.dispose();
+  }
+
   void updateProduct({required Product product}) {
     Product updated = product.copyWith(
-      price: product.price+1
+      price: product.price!+1
     );
     
     productProvider.updateProduct(product: updated);
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -77,4 +77,22 @@ class ProductRepository implements IProduct {
       return Failure(FailureImpl(message: RequestException.getError(defaultMessage: "Erro ao excluir produto...")));
     }
   }
+  
+  @override
+  AsyncResult<Product, FailureImpl> getProductDetails({required String id}) async {
+    try {
+      Response response = await APIConfig.request().then(
+        (uno) => uno.get(
+          "/Products/$id",
+          timeout: const Duration(seconds: 30)
+        )
+      );
+    
+      return Product.fromJson(response.data).toSuccess();
+    } on UnoError catch (error) {
+      return Failure(FailureImpl(message: RequestException.getError(data: error.response?.data, defaultMessage: "Erro ao buscar detalhes do produto..."), data: error));
+    } catch (exception) {
+      return Failure(FailureImpl(message: RequestException.getError(defaultMessage: "Erro ao buscar detalhes do produto")));
+    }
+  }
 }

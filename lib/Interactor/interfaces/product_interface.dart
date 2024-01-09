@@ -10,5 +10,7 @@ abstract class IProduct {
   
   AsyncResult<void, FailureImpl> deleteProduct({required String id});
 
+  AsyncResult<Product, FailureImpl> getProductDetails({required String id});
+
   AsyncResult<List<Product>, FailureImpl> getAllProducts();
 }

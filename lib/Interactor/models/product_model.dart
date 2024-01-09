@@ -1,40 +1,12 @@
-// class Product {
-//   String? id;
-//   String? title;
-//   double? price;
-//   String? description;
-//   String? image;
-//   String? category;
+import 'package:fake_store_app/Interactor/base/entity.dart';
 
-//   Product({this.title, this.price, this.description, this.image, this.category});
-
-//   Product.fromJson(Map<String, dynamic> json) {
-//     id = json['id'];
-//     title = json['title'];
-//     price = double.parse(json['price']);
-//     description = json['description'];
-//     image = json['image'];
-//     category = json['category'];
-//   }
-
-//   Map<String, dynamic> toJson() {
-//     final Map<String, dynamic> data = <String, dynamic>{};
-//     data['title'] = title;
-//     data['price'] = price.toString();
-//     data['description'] = description;
-//     data['image'] = image;
-//     data['category'] = category;
-//     return data;
-//   }
-// }
-
-class Product {
-  final String? id;
-  final String title;
-  final double price;
-  final String description;
-  final String image;
-  final String category;
+class Product extends Entity{
+  String? id;
+  String? title;
+  double? price;
+  String? description;
+  String? image;
+  String? category;
 
   Product({this.id, required this.title, required this.price, required this.description, required this.image, required this.category});
 
@@ -48,6 +20,8 @@ class Product {
       category: json["category"]
     );
   }
+
+  Product.empty();
 
   Product copyWith({
     String? id,
@@ -67,6 +41,7 @@ class Product {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['title'] = title;

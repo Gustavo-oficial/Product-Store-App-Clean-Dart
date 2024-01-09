@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../base/store.dart';
 import '../interfaces/product_interface.dart';
 import '../models/product_model.dart';
@@ -21,8 +23,9 @@ class ProductProvider extends Store {
   ProductLoadingState get loadingState => _loadingState;
 
   List<Product> productList = List.empty(growable: true);
+  Product product = Product.empty();
 
-  void setLoading({required ProductLoadingState value}){
+  setLoading({required ProductLoadingState value}) {
     _loadingState = value;
 
     notifyListeners();
@@ -30,6 +33,7 @@ class ProductProvider extends Store {
 
   Future<void>  getProducts() async{
     setLoading(value: ProductLoadingState.initial);
+
     var request = await repository.getAllProducts();
 
     request.fold(
@@ -39,6 +43,23 @@ class ProductProvider extends Store {
         setLoading(value: ProductLoadingState.loaded);
       }, 
       (failure) => null
+    );
+
+    notifyListeners();
+  }
+
+  Future<void>  getProduct({required BuildContext context, required String id}) async{
+    setLoading(value: ProductLoadingState.initial);
+    
+    var request = await repository.getProductDetails(id: id);
+
+    await request.fold(
+      (success) async{
+        product = success;
+
+        setLoading(value: ProductLoadingState.loaded);
+      }, 
+      (failure) => showErrorMessage(context, failure.message)
     );
 
     notifyListeners();
