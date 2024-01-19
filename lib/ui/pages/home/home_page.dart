@@ -1,6 +1,6 @@
 import 'package:fake_store_app/Interactor/base/screen_consts.dart';
 import 'package:fake_store_app/Interactor/models/product_model.dart';
-import 'package:fake_store_app/Interactor/provider/product_provider.dart';
+import 'package:fake_store_app/Services/provider/product_provider.dart';
 import 'package:fake_store_app/ui/components/card_product.dart';
 import 'package:fake_store_app/ui/components/loading.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    productProvider.dispose();
     super.dispose();
   }
 
@@ -79,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                           product: productProvider.productList[index],
                           delete: () => productProvider.deleteProduct(id: productProvider.productList[index].id!),
                           update: () => updateProduct(product: productProvider.productList[index]),
-                          disable: productProvider.loadingState == ProductLoadingState.deleteLoading || productProvider.loadingState == ProductLoadingState.updateLoading,
+                          disable: productProvider.loadingState == ProductLoadingState.deleteLoading || productProvider.loadingState == ProductLoadingState.updateLoading
                         );
                       }
                     ),

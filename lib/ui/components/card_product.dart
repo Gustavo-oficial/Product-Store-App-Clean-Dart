@@ -1,10 +1,7 @@
 import 'package:fake_store_app/Interactor/base/screen_consts.dart';
 import 'package:fake_store_app/Interactor/models/product_model.dart';
-import 'package:fake_store_app/Interactor/provider/product_provider.dart';
-import 'package:fake_store_app/Services/repositories/product_repository.dart';
-import 'package:fake_store_app/ui/pages/product/product_page.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 
 class CardProduct extends StatelessWidget {
   const CardProduct({
@@ -22,14 +19,7 @@ class CardProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.push(context, MaterialPageRoute(
-        builder: (context) {
-          return ChangeNotifierProvider(
-            create: (context) => ProductProvider(ProductRepository()),
-            child: ProductPage(id: product.id!),
-          );
-        }
-      )),
+      onTap: () => context.push("/product/${product.id}"),
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration:  BoxDecoration(

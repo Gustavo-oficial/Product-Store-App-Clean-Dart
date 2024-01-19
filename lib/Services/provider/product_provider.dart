@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../base/store.dart';
-import '../interfaces/product_interface.dart';
-import '../models/product_model.dart';
+import '../../Interactor/base/store.dart';
+import '../../Interactor/interfaces/product_interface.dart';
+import '../../Interactor/models/product_model.dart';
 
 enum ProductLoadingState {
   none,

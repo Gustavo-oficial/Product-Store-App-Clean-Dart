@@ -1,5 +1,5 @@
 import 'package:fake_store_app/Interactor/interfaces/product_interface.dart';
-import 'package:fake_store_app/Interactor/provider/product_provider.dart';
+import 'package:fake_store_app/Services/provider/product_provider.dart';
 import 'package:fake_store_app/Services/repositories/product_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -13,10 +13,10 @@ void main() async{
   DI.addInjections();
   
   runApp(
-    Provider(
-      create: (_) => ProductProvider(ProductRepository()),
+    ChangeNotifierProvider(
+      create: (context) => ProductProvider(ProductRepository()),
       child: const MyApp()
-    )
+    ),
   );
 }
 
