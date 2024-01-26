@@ -1,4 +1,4 @@
-import 'package:fake_store_app/ui/pages/product/product_page.dart';
+import 'package:fake_store_app/UI/pages/product/product_page.dart';
 import 'package:flutter/material.dart';
 
 class ImageHero extends StatelessWidget {

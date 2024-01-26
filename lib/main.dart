@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
-import 'ui/pages/app/app_widget.dart';
+import 'UI/pages/app/app_widget.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +16,7 @@ void main() async{
     ChangeNotifierProvider(
       create: (context) => ProductProvider(ProductRepository()),
       child: const MyApp()
-    ),
+    )
   );
 }
 

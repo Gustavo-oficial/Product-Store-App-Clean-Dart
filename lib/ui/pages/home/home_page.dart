@@ -1,8 +1,8 @@
 import 'package:fake_store_app/Interactor/base/screen_consts.dart';
 import 'package:fake_store_app/Interactor/models/product_model.dart';
 import 'package:fake_store_app/Services/provider/product_provider.dart';
-import 'package:fake_store_app/ui/components/card_product.dart';
-import 'package:fake_store_app/ui/components/loading.dart';
+import 'package:fake_store_app/UI/components/card_product.dart';
+import 'package:fake_store_app/UI/components/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 

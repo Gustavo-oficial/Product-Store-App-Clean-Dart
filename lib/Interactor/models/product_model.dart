@@ -1,6 +1,4 @@
-import 'package:fake_store_app/Interactor/base/entity.dart';
-
-class Product extends Entity{
+class Product{
   String? id;
   String? title;
   double? price;
@@ -41,7 +39,6 @@ class Product extends Entity{
     );
   }
 
-  @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['title'] = title;

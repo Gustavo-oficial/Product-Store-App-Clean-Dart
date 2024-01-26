@@ -1,4 +1,4 @@
-import 'package:fake_store_app/ui/styles/theme/theme.dart';
+import 'package:fake_store_app/UI/styles/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 import '../routes/routes.dart';
